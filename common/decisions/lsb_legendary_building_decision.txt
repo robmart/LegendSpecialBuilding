@@ -216,65 +216,61 @@ clear_ground_for_legendary_building_shrine = {
 	}
 
 	widget = {
-		gui = "decision_view_widget_option_list_generic"
-		controller = decision_option_list_controller
-		decision_to_second_step_button = "CHOOSE_LEGENDARY_BUILDING"
-		show_from_start = yes
-
-		item = { # Shrine
-			value = clear_ground_legendary_shrine
-			is_valid = {
-				custom_tooltip = { # The legend you finished is valid for a legendary shrine
-					text = clear_ground_legendary_shrine_tt
-					has_character_flag = legendary_shrine_flag
-				}
+		controller = create_holy_order
+		gui = "decision_view_widget_place_special_building"
+		barony_valid = {
+			holder = scope:ruler
+			title_province = {
+				has_special_building = no
+				has_special_building_slot = no
 			}
-			current_description = clear_ground_legendary_shrine_desc
-			localization = clear_ground_legendary_shrine
-			icon = "gfx/interface/icons/building_types/icon_building_legendary_shrine.dds"
-			flat = yes
-			ai_chance = { value = 10 }
 		}
 	}
 
 	effect = {
-		send_interface_toast = {
-			title = clear_ground_for_legendary_building.toast
-			if = {
-				limit = {
-					scope:clear_ground_legendary_shrine = yes
-				}
-				var:legendary_reward_location = {
-					add_special_building_slot = legendary_shrine
-				}
+		if = {
+			limit = {
+				exists = scope:barony
 			}
-		}
-		hidden_effect = {
-			# Shift the legend protagonist to the province
-			if = {
-				limit = {
-					exists = var:legendary_figure
-				}
-				var:legendary_reward_location = {
-					set_variable = {
-						name = legendary_figure
-						value =  root.var:legendary_figure
+
+			send_interface_toast = {
+				title = clear_ground_for_legendary_building.toast
+					
+				scope:barony = {
+					title_province = {
+						add_special_building_slot = legendary_shrine
 					}
 				}
-				remove_variable = legendary_figure
 			}
-			# Cleanup
-			if = {
-				limit = {
-					has_character_flag = legendary_shrine_flag
+			hidden_effect = {
+				# Shift the legend protagonist to the province
+				if = {
+					limit = {
+						exists = var:legendary_figure
+					}
+					scope:barony ?= {
+						title_province = {
+							set_variable = {
+								name = legendary_figure
+								value =  root.var:legendary_figure
+							}
+						}
+					}
+					remove_variable = legendary_figure
 				}
-				remove_character_flag = legendary_shrine_flag
-			}
-			if = {
-				limit = {
-					exists = var:legendary_reward_location
+				# Cleanup
+				if = {
+					limit = {
+						has_character_flag = legendary_shrine_flag
+					}
+					remove_character_flag = legendary_shrine_flag
 				}
-				remove_variable = legendary_reward_location
+				if = {
+					limit = {
+						exists = var:legendary_reward_location
+					}
+					remove_variable = legendary_reward_location
+				}
 			}
 		}
 	}
@@ -307,65 +303,61 @@ clear_ground_for_legendary_building_statue = {
 	}
 
 	widget = {
-		gui = "decision_view_widget_option_list_generic"
-		controller = decision_option_list_controller
-		decision_to_second_step_button = "CHOOSE_LEGENDARY_BUILDING"
-		show_from_start = yes
-
-		item = { # Statue
-			value = clear_ground_legendary_statue
-			is_valid = {
-				custom_tooltip = { # The legend you finished is valid for a legendary statue
-					text = clear_ground_legendary_statue_tt
-					has_character_flag = legendary_statue_flag
-				}
+		controller = create_holy_order
+		gui = "decision_view_widget_place_special_building"
+		barony_valid = {
+			holder = scope:ruler
+			title_province = {
+				has_special_building = no
+				has_special_building_slot = no
 			}
-			current_description = clear_ground_legendary_statue_desc
-			localization = clear_ground_legendary_statue
-			icon = "gfx/interface/icons/building_types/icon_building_legendary_statue.dds"
-			flat = yes
-			ai_chance = { value = 10 }
 		}
 	}
 
 	effect = {
-		send_interface_toast = {
-			title = clear_ground_for_legendary_building.toast
-			if = {
-				limit = {
-					scope:clear_ground_legendary_statue = yes
-				}
-				var:legendary_reward_location = {
-					add_special_building_slot = legendary_statue
-				}
+		if = {
+			limit = {
+				exists = scope:barony
 			}
-		}
-		hidden_effect = {
-			# Shift the legend protagonist to the province
-			if = {
-				limit = {
-					exists = var:legendary_figure
-				}
-				var:legendary_reward_location = {
-					set_variable = {
-						name = legendary_figure
-						value =  root.var:legendary_figure
+			send_interface_toast = {
+				title = clear_ground_for_legendary_building.toast
+					
+				scope:barony = {
+					title_province = {
+						add_special_building_slot = legendary_statue
 					}
 				}
-				remove_variable = legendary_figure
 			}
-			# Cleanup
-			if = {
-				limit = {
-					has_character_flag = legendary_statue_flag
+			hidden_effect = {
+				# Shift the legend protagonist to the province
+				if = {
+					limit = {
+						exists = var:legendary_figure
+					}
+					
+					scope:barony ?= {
+						title_province = {
+							set_variable = {
+								name = legendary_figure
+								value =  root.var:legendary_figure
+							}
+						}
+					}
+					remove_variable = legendary_figure
 				}
-				remove_character_flag = legendary_statue_flag
-			}
-			if = {
-				limit = {
-					exists = var:legendary_reward_location
+				# Cleanup
+				if = {
+					limit = {
+						has_character_flag = legendary_statue_flag
+					}
+					remove_character_flag = legendary_statue_flag
 				}
-				remove_variable = legendary_reward_location
+				if = {
+					limit = {
+						exists = var:legendary_reward_location
+					}
+					remove_variable = legendary_reward_location
+				}
 			}
 		}
 	}
@@ -398,65 +390,61 @@ clear_ground_for_legendary_building_palace = {
 	}
 
 	widget = {
-		gui = "decision_view_widget_option_list_generic"
-		controller = decision_option_list_controller
-		decision_to_second_step_button = "CHOOSE_LEGENDARY_BUILDING"
-		show_from_start = yes
-
-		item = { # Palace
-			value = clear_ground_legendary_palace
-			is_valid = {
-				custom_tooltip = { # The legend you finished is valid for a legendary palace
-					text = clear_ground_legendary_palace_tt
-					has_character_flag = legendary_palace_flag
-				}
+		controller = create_holy_order
+		gui = "decision_view_widget_place_special_building"
+		barony_valid = {
+			holder = scope:ruler
+			title_province = {
+				has_special_building = no
+				has_special_building_slot = no
 			}
-			current_description = clear_ground_legendary_palace_desc
-			localization = clear_ground_legendary_palace
-			icon = "gfx/interface/icons/building_types/icon_building_legendary_palace.dds"
-			flat = yes
-			ai_chance = { value = 10 }
 		}
 	}
 
 	effect = {
-		send_interface_toast = {
-			title = clear_ground_for_legendary_building.toast
-			if = {
-				limit = {
-					scope:clear_ground_legendary_palace = yes
-				}
-				var:legendary_reward_location = {
-					add_special_building_slot = legendary_palace
-				}
+		if = {
+			limit = {
+				exists = scope:barony
 			}
-		}
-		hidden_effect = {
-			# Shift the legend protagonist to the province
-			if = {
-				limit = {
-					exists = var:legendary_figure
-				}
-				var:legendary_reward_location = {
-					set_variable = {
-						name = legendary_figure
-						value =  root.var:legendary_figure
+			send_interface_toast = {
+				title = clear_ground_for_legendary_building.toast
+				
+				scope:barony = {
+					title_province = {
+						add_special_building_slot = legendary_palace
 					}
 				}
-				remove_variable = legendary_figure
 			}
-			# Cleanup
-			if = {
-				limit = {
-					has_character_flag = legendary_palace_flag
+			hidden_effect = {
+				# Shift the legend protagonist to the province
+				if = {
+					limit = {
+						exists = var:legendary_figure
+					}
+					
+					scope:barony ?= {
+						title_province = {
+							set_variable = {
+								name = legendary_figure
+								value =  root.var:legendary_figure
+							}
+						}
+					}
+					remove_variable = legendary_figure
 				}
-				remove_character_flag = legendary_palace_flag
-			}
-			if = {
-				limit = {
-					exists = var:legendary_reward_location
+				# Cleanup
+				if = {
+					limit = {
+						has_character_flag = legendary_palace_flag
+					}
+					remove_character_flag = legendary_palace_flag
 				}
-				remove_variable = legendary_reward_location
+				if = {
+					limit = {
+						exists = var:legendary_reward_location
+					}
+					remove_variable = legendary_reward_location
+				}
 			}
 		}
 	}
@@ -489,65 +477,61 @@ clear_ground_for_legendary_building_watchtower = {
 	}
 
 	widget = {
-		gui = "decision_view_widget_option_list_generic"
-		controller = decision_option_list_controller
-		decision_to_second_step_button = "CHOOSE_LEGENDARY_BUILDING"
-		show_from_start = yes
-
-		item = { # Watchtower
-			value = clear_ground_legendary_watchtower
-			is_valid = {
-				custom_tooltip = { # The legend you finished is valid for a legendary watchtower
-					text = clear_ground_legendary_watchtower_tt
-					has_character_flag = legendary_watchtower_flag
-				}
+		controller = create_holy_order
+		gui = "decision_view_widget_place_special_building"
+		barony_valid = {
+			holder = scope:ruler
+			title_province = {
+				has_special_building = no
+				has_special_building_slot = no
 			}
-			current_description = clear_ground_legendary_watchtower_desc
-			localization = clear_ground_legendary_watchtower
-			icon = "gfx/interface/icons/building_types/icon_building_legendary_watchtower.dds"
-			flat = yes
-			ai_chance = { value = 10 }
 		}
 	}
 
 	effect = {
-		send_interface_toast = {
-			title = clear_ground_for_legendary_building.toast
-			if = {
-				limit = {
-					scope:clear_ground_legendary_watchtower = yes
-				}
-				var:legendary_reward_location = {
-					add_special_building_slot = legendary_watchtower
-				}
+		if = {
+			limit = {
+				exists = scope:barony
 			}
-		}
-		hidden_effect = {
-			# Shift the legend protagonist to the province
-			if = {
-				limit = {
-					exists = var:legendary_figure
-				}
-				var:legendary_reward_location = {
-					set_variable = {
-						name = legendary_figure
-						value =  root.var:legendary_figure
+			send_interface_toast = {
+				title = clear_ground_for_legendary_building.toast
+				
+				scope:barony = {
+					title_province = {
+						add_special_building_slot = legendary_watchtower
 					}
 				}
-				remove_variable = legendary_figure
 			}
-			# Cleanup
-			if = {
-				limit = {
-					has_character_flag = legendary_watchtower_flag
+			hidden_effect = {
+				# Shift the legend protagonist to the province
+				if = {
+					limit = {
+						exists = var:legendary_figure
+					}
+					
+					scope:barony ?= {
+						title_province = {
+							set_variable = {
+								name = legendary_figure
+								value =  root.var:legendary_figure
+							}
+						}
+					}
+					remove_variable = legendary_figure
 				}
-				remove_character_flag = legendary_watchtower_flag
-			}
-			if = {
-				limit = {
-					exists = var:legendary_reward_location
+				# Cleanup
+				if = {
+					limit = {
+						has_character_flag = legendary_watchtower_flag
+					}
+					remove_character_flag = legendary_watchtower_flag
 				}
-				remove_variable = legendary_reward_location
+				if = {
+					limit = {
+						exists = var:legendary_reward_location
+					}
+					remove_variable = legendary_reward_location
+				}
 			}
 		}
 	}
@@ -580,65 +564,61 @@ clear_ground_for_legendary_building_hunting_lodge = {
 	}
 
 	widget = {
-		gui = "decision_view_widget_option_list_generic"
-		controller = decision_option_list_controller
-		decision_to_second_step_button = "CHOOSE_LEGENDARY_BUILDING"
-		show_from_start = yes
-
-		item = { # Hunting lodge
-			value = clear_ground_legendary_hunting_lodge
-			is_valid = {
-				custom_tooltip = { # The legend you finished is valid for a legendary hunting_lodge
-					text = clear_ground_legendary_hunting_lodge_tt
-					has_character_flag = legendary_hunting_lodge_flag
-				}
+		controller = create_holy_order
+		gui = "decision_view_widget_place_special_building"
+		barony_valid = {
+			holder = scope:ruler
+			title_province = {
+				has_special_building = no
+				has_special_building_slot = no
 			}
-			current_description = clear_ground_legendary_hunting_lodge_desc
-			localization = clear_ground_legendary_hunting_lodge
-			icon = "gfx/interface/icons/building_types/icon_building_legendary_hunting_grounds.dds"
-			flat = yes
-			ai_chance = { value = 10 }
 		}
 	}
 
 	effect = {
-		send_interface_toast = {
-			title = clear_ground_for_legendary_building.toast
-			if = {
-				limit = {
-					scope:clear_ground_legendary_hunting_lodge = yes
-				}
-				var:legendary_reward_location = {
-					add_special_building_slot = legendary_hunting_lodge
-				}
+		if = {
+			limit = {
+				exists = scope:barony
 			}
-		}
-		hidden_effect = {
-			# Shift the legend protagonist to the province
-			if = {
-				limit = {
-					exists = var:legendary_figure
-				}
-				var:legendary_reward_location = {
-					set_variable = {
-						name = legendary_figure
-						value =  root.var:legendary_figure
+			send_interface_toast = {
+				title = clear_ground_for_legendary_building.toast
+				
+				scope:barony = {
+					title_province = {
+						add_special_building_slot = legendary_hunting_lodge
 					}
 				}
-				remove_variable = legendary_figure
 			}
-			# Cleanup
-			if = {
-				limit = {
-					has_character_flag = legendary_hunting_lodge_flag
+			hidden_effect = {
+				# Shift the legend protagonist to the province
+				if = {
+					limit = {
+						exists = var:legendary_figure
+					}
+					
+					scope:barony ?= {
+						title_province = {
+							set_variable = {
+								name = legendary_figure
+								value =  root.var:legendary_figure
+							}
+						}
+					}
+					remove_variable = legendary_figure
 				}
-				remove_character_flag = legendary_hunting_lodge_flag
-			}
-			if = {
-				limit = {
-					exists = var:legendary_reward_location
+				# Cleanup
+				if = {
+					limit = {
+						has_character_flag = legendary_hunting_lodge_flag
+					}
+					remove_character_flag = legendary_hunting_lodge_flag
 				}
-				remove_variable = legendary_reward_location
+				if = {
+					limit = {
+						exists = var:legendary_reward_location
+					}
+					remove_variable = legendary_reward_location
+				}
 			}
 		}
 	}
