@@ -40,7 +40,7 @@ flowcontainer = {
 			minimumsize = { 200 0 }
 			
 			onclick = "[DecisionViewWidgetCreateHolyOrder.OnSelectCapital]"
-			onclick = "[GetVariableSystem.Toggle('special_building')]"
+			onclick = "[GetVariableSystem.Set('special_building', 'true')]"
 			clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_select"
 			enabled = "[DecisionViewWidgetCreateHolyOrder.HasValidBaronies]"
 			tooltip = "LEASE_OUT_BARONIES_TOOLTIP"

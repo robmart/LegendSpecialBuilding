@@ -219,7 +219,14 @@ clear_ground_for_legendary_building_shrine = {
 		controller = create_holy_order
 		gui = "decision_view_widget_place_special_building"
 		barony_valid = {
-			holder = scope:ruler
+			OR = {
+				holder = scope:ruler
+				AND = { 
+					holder.primary_title.tier = tier_barony
+					exists = holder.liege
+					holder.liege = scope:ruler
+				}
+			}
 			title_province = {
 				has_special_building = no
 				has_special_building_slot = no
@@ -306,7 +313,14 @@ clear_ground_for_legendary_building_statue = {
 		controller = create_holy_order
 		gui = "decision_view_widget_place_special_building"
 		barony_valid = {
-			holder = scope:ruler
+			OR = {
+				holder = scope:ruler
+				AND = { 
+					holder.primary_title.tier = tier_barony
+					exists = holder.liege
+					holder.liege = scope:ruler
+				}
+			}
 			title_province = {
 				has_special_building = no
 				has_special_building_slot = no
@@ -393,7 +407,14 @@ clear_ground_for_legendary_building_palace = {
 		controller = create_holy_order
 		gui = "decision_view_widget_place_special_building"
 		barony_valid = {
-			holder = scope:ruler
+			OR = {
+				holder = scope:ruler
+				AND = { 
+					holder.primary_title.tier = tier_barony
+					exists = holder.liege
+					holder.liege = scope:ruler
+				}
+			}
 			title_province = {
 				has_special_building = no
 				has_special_building_slot = no
@@ -480,7 +501,14 @@ clear_ground_for_legendary_building_watchtower = {
 		controller = create_holy_order
 		gui = "decision_view_widget_place_special_building"
 		barony_valid = {
-			holder = scope:ruler
+			OR = {
+				holder = scope:ruler
+				AND = { 
+					holder.primary_title.tier = tier_barony
+					exists = holder.liege
+					holder.liege = scope:ruler
+				}
+			}
 			title_province = {
 				has_special_building = no
 				has_special_building_slot = no
@@ -567,7 +595,14 @@ clear_ground_for_legendary_building_hunting_lodge = {
 		controller = create_holy_order
 		gui = "decision_view_widget_place_special_building"
 		barony_valid = {
-			holder = scope:ruler
+			OR = {
+				holder = scope:ruler
+				AND = { 
+					holder.primary_title.tier = tier_barony
+					exists = holder.liege
+					holder.liege = scope:ruler
+				}
+			}
 			title_province = {
 				has_special_building = no
 				has_special_building_slot = no
